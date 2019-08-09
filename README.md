@@ -6,7 +6,7 @@ SELECT
   , i.name as index_name
   , ps.index_type_desc as index_type
   , ps.avg_fragmentation_in_percent
-  , 'DECLARE @t1 DATETIME, @t2 INT; SET @t1 = GETDATE();' +
+  , 'SET @t1 = GETDATE();' +
     'ALTER INDEX ' + QUOTENAME(i.name)  + ' ON ' + QUOTENAME(OBJECT_SCHEMA_NAME(ps.object_id)) + '.' + QUOTENAME(OBJECT_NAME(i.object_id)) +
     CASE
       WHEN ps.avg_fragmentation_in_percent > 30 THEN ' REBUILD;' 
